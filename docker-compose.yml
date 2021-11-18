@@ -18,13 +18,13 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--web.enable-lifecycle'
     ports:
-      - 9090:9090
+      - 8090:9090
     links:
       - cadvisor:cadvisor
       - alertmanager:alertmanager
     depends_on:
       - cadvisor
-    restart: always
+    restart: no
     deploy:
       mode: global
 
@@ -40,18 +40,18 @@ services:
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
     ports:
-      - 9100:9100
-    restart: always
+      - 8091:9100
+    restart: no
     deploy:
       mode: global
 
   alertmanager:
     image: prom/alertmanager:v0.12.0
     ports:
-      - 9093:9093
+      - 8092:9093
     volumes:
       - ./alertmanager/:/etc/alertmanager/
-    restart: always
+    restart: no
     command:
       - '-config.file=/etc/alertmanager/config.yml'
       - '-storage.path=/alertmanager'
@@ -66,8 +66,8 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
-      - 8080:8080
-    restart: always
+      - 8093:8080
+    restart: no
     deploy:
       mode: global
 
@@ -76,7 +76,7 @@ services:
     depends_on:
       - prometheus
     ports:
-      - 3000:3000
+      - 8094:3000
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/dashboards:/var/lib/grafana/dashboards
@@ -87,9 +87,9 @@ services:
   blackbox_exporter:
     image: prom/blackbox-exporter:v0.10.0
     ports:
-      - 9115:9115
+      - 8095:9115
     volumes:
       - ./blackboxexporter/:/etc/blackboxexporter/
     command:
       - '--config.file=/etc/blackboxexporter/config.yml'
-    restart: always
+    restart: no
