@@ -1,7 +1,13 @@
 route:
-    receiver: 'pager'
+  # Send all notifications to me.
+  receiver: email-me
 
 receivers:
-    - name: 'pager'
-      webhook_configs:
-      - url: https://ngrok.io # replace with your PagerTree webhook url
+- name: email-me
+  email_configs:
+  - to: sreelalr@gmail.com
+    from: sreelalraveendranpillai@gmail.com
+    smarthost: smtp.gmail.com:587
+    auth_username: "sreelalraveendranpillai"
+    auth_identity: "Sreelal"
+    auth_password: "xxxxxxxxxx"
