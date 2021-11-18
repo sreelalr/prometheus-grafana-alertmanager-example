@@ -47,11 +47,8 @@ scrape_configs:
       module: ['tcp_connect']
     static_configs:
       - targets:
-          - 'sbx-ods-1.clxpxja4gsqb.us-east-1.rds.amazonaws.com:5432'
-        labels:
-          role: ods
-          owner: mpa-sre
-          env: prod-lab  
+          - 'llll'
+        
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
