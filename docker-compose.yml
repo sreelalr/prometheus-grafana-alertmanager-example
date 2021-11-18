@@ -24,7 +24,7 @@ services:
       - alertmanager:alertmanager
     depends_on:
       - cadvisor
-    restart: no
+    restart: "no"
     deploy:
       mode: global
 
@@ -41,7 +41,7 @@ services:
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
     ports:
       - 8091:9100
-    restart: no
+    restart: "no"
     deploy:
       mode: global
 
@@ -51,7 +51,7 @@ services:
       - 8092:9093
     volumes:
       - ./alertmanager/:/etc/alertmanager/
-    restart: no
+    restart: "no"
     command:
       - '-config.file=/etc/alertmanager/config.yml'
       - '-storage.path=/alertmanager'
@@ -67,7 +67,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
       - 8093:8080
-    restart: no
+    restart: "no"
     deploy:
       mode: global
 
@@ -92,4 +92,4 @@ services:
       - ./blackboxexporter/:/etc/blackboxexporter/
     command:
       - '--config.file=/etc/blackboxexporter/config.yml'
-    restart: no
+    restart: "no"
