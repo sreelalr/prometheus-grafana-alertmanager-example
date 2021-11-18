@@ -27,7 +27,7 @@ if [ -d "$DIRECTORY" ]; then
   rm -rf "$DIRECTORY"
 fi
 echo "Cloning Project"
-git clone https://github.com/PagerTree/prometheus-grafana-alertmanager-example.git
+git clone https://github.com/sreelalr/prometheus-grafana-alertmanager-example.git
 cd "$DIRECTORY"
 
 echo "Making Utility scripts executable"
@@ -41,4 +41,4 @@ sleep 5
 
 while docker service ls | grep "0/1";  do sleep 3; echo "Waiting..."; done;
 
-echo "You can now access your Grafana dashboard at http://$ADDRESS:3000"
+echo "You can now access your Grafana dashboard at http://$ADDRESS:8094"
