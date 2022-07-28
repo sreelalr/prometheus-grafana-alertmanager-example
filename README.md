@@ -40,7 +40,7 @@ For this demo the smallest standard droplet will do. If you don't know how to cr
 # Installation & Configuration
 For a one click install experience run the following command:
 ```curl
-curl https://raw.githubusercontent.com/PagerTree/prometheus-grafana-alertmanager-example/master/install.sh -H 'Cache-Control: no-cache' | sudo sh
+curl https://raw.githubusercontent.com/sreelalr/prometheus-grafana-alertmanager-example/master/install.sh -H 'Cache-Control: no-cache' | sudo sh
 ```
 
 At this point you'll have automagically deployed the entire Grafana and Prometheus stack. You can now access the Grafana dashboard at `http://<Host IP Address>:3000` *Username: `admin`, Password: `9uT46ZKE`*. *Note: before the dashboards will work you need to follow the [Datasource Configuration section](#datasource-configuration).*
